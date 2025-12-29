@@ -35,7 +35,6 @@ jobs:
           - t/plugin/[l-z]*
 
     runs-on: ${{ matrix.platform }}
-    timeout-minutes: 90
     env:
       SERVER_NAME: ${{ matrix.os_name }}
       OPENRESTY_VERSION: default
