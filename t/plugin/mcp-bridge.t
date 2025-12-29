@@ -16,8 +16,6 @@
 #
 use t::APISIX;
 
-# This test cannot be executed normally at the moment, so it will be temporarily skipped and fixed in a later PR.
-plan(skip_all => 'skip test case');
 
 repeat_each(1);
 no_long_string();
@@ -81,7 +79,7 @@ property "args" validation failed: wrong type: expected array, got string
                         "uri": "/mcp/*"
                 }]]
                 )
-
+            ngx.sleep(1)
             if code >= 300 then
                 ngx.status = code
             end
@@ -96,7 +94,7 @@ passed
 === TEST 3: test mcp client
 --- timeout: 20
 --- exec
-cd t && pnpm test plugin/mcp-bridge.spec.mts 2>&1
+cd t && pnpm test plugin/mcp-bridge.spec.mts
 --- no_error_log
 failed to execute the script with status
 --- response_body eval
